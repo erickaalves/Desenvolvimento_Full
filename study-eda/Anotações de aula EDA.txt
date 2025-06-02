@@ -1,0 +1,30 @@
+Anotações de aula EDA 01
+
+Dependendo do sistema operacional a alocação é mostrada de forma descrecente ou crescente
+
+Ponteiro guarda enderecos de memoria, aponta pra uma regiao de memoria
+
+ponteiro pra inteiro, aponta pra um endereco de memoria que guarda um inteiro lá 
+ponteiro é uma variavel que guarda o endereco de outra variavel	
+asterisco = conteudo de um endereco de memoria 
+ponteiro endereco, variavel valor
+
+todo ponteiro que guarda enderecos de memoria, eles usam 8 bytes e não 4
+
+null, não tá apontando pra nada, terra, vazio
+
+conteudo do endereco de memoria que ele ta apontando
+*p2 = 4
+se em p2 ele aponta pro endereco 5k
+voce vai no conteudo do endereco 5k e muda esse valor pra 4
+
+p1 = &p2 nao da certo, por que o int *p1, aceita apontar pra endereco de inteiros e nao apontar pra outro endereco, nesse caso seria ponteiro de ponteiro **
+p1 = a nao da certo tambem, por que ele nao guarda o valor inteiro e sim o endereco do inteiro
+p1 = &a seria a forma correta, ja que p1 é um ponteiro pra inteiro, guarda o enderevco de memoria de um inteiro	
+
+*(conteudo do endereco)
+** ponteiro de ponteiro, conteudo do ponteiro pra o qual outro ponteiro esta apontando
+
+
+
+
