@@ -2,8 +2,8 @@
     "editor.quickSuggestions": {
         "other": false,
         "comments": false,
-        "strings": false,
-    
+        "strings": false
+    },
     "editor.suggestOnTriggerCharacters": false,
     "editor.suggest.showWords": false,
     "editor.suggest.showSnippets": false,
@@ -28,5 +28,4 @@
     "editor.suggest.showUnits": false,
     "editor.suggest.showUsers": false,
     "editor.suggest.showValues": false
-}
 }
