@@ -25,6 +25,9 @@ p1 = &a seria a forma correta, ja que p1 é um ponteiro pra inteiro, guarda o en
 *(conteudo do endereco)
 ** ponteiro de ponteiro, conteudo do ponteiro pra o qual outro ponteiro esta apontando
 
+const int *vector
+essa forma de passar um parametro, faz com que a região de memória onde está o valor, possa ser somente lida e não modificada, por isso o const de constant
+
 
 
 
