@@ -28,6 +28,8 @@ p1 = &a seria a forma correta, ja que p1 é um ponteiro pra inteiro, guarda o en
 const int *vector
 essa forma de passar um parametro, faz com que a região de memória onde está o valor, possa ser somente lida e não modificada, por isso o const de constant
 
-
+scanf("%d", e); internamente isso é ele indo no endereço de E e atribuindo o valor recebido naquela região de memória
+int v[3]= esse array, no compilador por baixo dos panos ele captura o valor da regiao de memoria de indice 3 e captura o valor que está lá pra mostrar
+essas duas operações são possiveis por conta do stdio.h, biblioteca
 
 
