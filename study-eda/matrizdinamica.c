@@ -25,7 +25,10 @@ int main(){
         puts ("");
 
     }
-
-    //falta desalocar ainda
+    for(int i = 0;i<linha;i++){
+        free(m[i]);
+    }
+    free(m);
+    m = NULL;
     return 0;
 }

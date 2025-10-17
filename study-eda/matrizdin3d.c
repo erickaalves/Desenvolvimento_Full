@@ -28,8 +28,14 @@ int main (){
         }
         puts ("");
     }
-
-
+    for(int k=0;k<fatia;k++){
+        for(int i= 0; i<linha;i++){
+            free(m[k][i]); //3* fatia interna
+        }
+        free(m[k]); // 2* fatia mais interna
+    }
+    free(m); //fatia mais externa
+    m = NULL;
     return 0;
 }
  
