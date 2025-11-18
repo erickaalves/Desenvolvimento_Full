@@ -1,0 +1,20 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+
+int main (){
+    int nrows = 100000;
+    int ncols = 5000;
+    int elements = nrows * ncols;
+
+    int *m = (int*) calloc(elements, sizeof(int));
+
+    for (int i = 0; i<nrows;i++){
+        for (int j = 0; j<ncols;j++){
+            int p = (i*ncols)+j;
+            m[p] = (i+j) % 2;
+        }
+    }
+
+
+    return 0;
+}

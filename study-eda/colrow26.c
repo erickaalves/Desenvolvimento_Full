@@ -17,12 +17,11 @@ int main (){
 
     int **m = create_int_matrix(nrows,ncols);
 
-    for (int i = 0; i<nrows;i++){
-        for (int j = 0; j<ncols;j++){
+    for (int j = 0; j<ncols;j++){
+        for (int i = 0; i<nrows;i++){
             m[i][j] = (i+j) % 2;
         }
     }
-
 
     return 0;
 }
