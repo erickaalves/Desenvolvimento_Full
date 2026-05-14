@@ -2,94 +2,97 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct _livro {
-    char titulo[100];
-    unsigned int num_paginas;#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+typedef struct arma {
+	char nome[50];
+	int dano;
+	int durabilidade;
+} Arma;
 
-typedef struct _livro {
-    char titulo[100];
-    unsigned int num_paginas;
-    float preco;
-}Livro;
+struct persona {
+	char nome[50];
+	int vida;
+	Arma *arma_equipada;
+};
 
-//construtor para livro
-Livro* create_livro(const char *titulo, unsigned int num_paginas, float preco){
-    Livro* livro =(Livro*) calloc(1,sizeof(Livro));
-    strcpy(livro -> titulo, titulo);
-    livro -> num_paginas = num_paginas;
-    livro -> preco = preco;
-    return livro;
-}
-void update_livro(Livro *livro, const char *titulo, unsigned int num_paginas, float preco){
-    strcpy (livro->titulo, titulo);
-    livro -> num_paginas = num_paginas;
-    livro -> preco = preco;
-
+Arma* create_arma(char *nome, int dano, int durabilidade) {
+	Arma* nova_arma = (Arma*) calloc(1,sizeof(Arma));
+	strcpy(nova_arma->nome, nome);
+	nova_arma->dano = dano;
+	nova_arma->durabilidade = durabilidade;
+	return nova_arma;
 }
 
-void print_livro(const Livro *livro){
-    printf("Titulo: %s\n", livro->titulo);
-    printf("Num de paginas: %d\n", livro->num_paginas);
-    printf("Preco: %.2f\n\n", livro->preco);
+void read_arma(Arma* arma_leitura) {
+    if (arma_leitura==NULL){
+        printf("Não é possivel ler essa regiao de memoria, nao ha nada  la");
+        return;
+    }
+    else{
+	printf("Nome = %s, Dano = %d, Durabilidade = %d\n",
+	       arma_leitura->nome,
+	       arma_leitura->dano,
+	       arma_leitura->durabilidade);
+    }
 }
 
-void delete_livro (Livro **livro){
-    free(*livro);
-    *livro = NULL;
+void update_arma(Arma* arma_update, char* nome, int dano, int durabilidade){
+    strcpy(arma_update-> nome, nome);
+    arma_update-> dano = dano;
+    arma_update->durabilidade = durabilidade;
 }
 
-int main(){
-    Livro *livro_harry = create_livro("Harry Poter 1", 200,25);
-    print_livro(livro_harry);
-    livro_harry->preco = 10;
-    print_livro(livro_harry);
-    update_livro(livro_harry, "Harry Poter 001", 210,30);
-    print_livro(livro_harry);
-    delete_livro(&livro_harry);
-    printf("livro_harry == NULL ? %d\n", livro_harry == NULL);
-
-    return 0;
-}
-    float preco;
-}Livro;
-
-//construtor para livro
-Livro* create_livro(const char *titulo, unsigned int num_paginas, float preco){
-    Livro* livro =(Livro*) calloc(1,sizeof(Livro));
-    strcpy(livro -> titulo, titulo);
-    livro -> num_paginas = num_paginas;
-    livro -> preco = preco;
-    return livro;
-}
-void update_livro(Livro *livro, const char *titulo, unsigned int num_paginas, float preco){
-    strcpy (livro->titulo, titulo);
-    livro -> num_paginas = num_paginas;
-    livro -> preco = preco;
-
+void delete_arma(Arma** arma_delete){
+    free(*arma_delete);
+    *arma_delete=NULL;
 }
 
-void print_livro(const Livro *livro){
-    printf("Titulo: %s\n", livro->titulo);
-    printf("Num de paginas: %d\n", livro->num_paginas);
-    printf("Preco: %.2f\n\n", livro->preco);
+struct persona* create_persona(char *nome, int vida, Arma* arma_equipada) {
+	struct persona* nova_persona = (struct persona*) calloc(1, sizeof(struct persona));
+	strcpy(nova_persona->nome, nome);
+	nova_persona-> vida = vida;
+	nova_persona-> arma_equipada = arma_equipada;
+	return nova_persona;
 }
 
-void delete_livro (Livro **livro){
-    free(*livro);
-    *livro = NULL;
+void read_persona(struct persona *persona_leitura){
+    if (persona_leitura->arma_equipada == NULL){
+        printf("Nenhuma arma equipada");
+    }else {
+        printf("Nome = %s, Vida = %d, Arma equipada = %s\n", persona_leitura-> nome, 
+                                                             persona_leitura-> vida, 
+                                                             persona_leitura-> arma_equipada->nome);
+    }
 }
 
-int main(){
-    Livro *livro_harry = create_livro("Harry Poter 1", 200,25);
-    print_livro(livro_harry);
-    livro_harry->preco = 10;
-    print_livro(livro_harry);
-    update_livro(livro_harry, "Harry Poter 001", 210,30);
-    print_livro(livro_harry);
-    delete_livro(&livro_harry);
-    printf("livro_harry == NULL ? %d\n", livro_harry == NULL);
+void update_persona(struct persona* persona_update, char* nome, int vida, Arma* arma_equipada){
+    strcpy (persona_update -> nome, nome);
+    persona_update->vida = vida;
+    persona_update->arma_equipada=arma_equipada;
+}
 
-    return 0;
+void delete_persona(struct persona **persona_delete){
+    delete_arma(&((*persona_delete)->arma_equipada));
+    free(*persona_delete);
+    *persona_delete = NULL;
+}
+
+int main() {
+	Arma* meu_fuzil = create_arma("Fuzil", 100, 1000);
+	read_arma(meu_fuzil);
+    Arma* minha_awm = create_arma("AWM", 200, 2000);
+    read_arma(minha_awm);
+	struct persona * new_pessoa = create_persona ("Erick", 100, meu_fuzil);
+	read_persona(new_pessoa);
+	struct persona *new_dallisson = create_persona ("Dallisson", 100, minha_awm);
+	read_persona(new_dallisson);
+	update_arma(meu_fuzil,"Fuzil",500,5000);
+	read_arma(meu_fuzil);
+	update_persona(new_pessoa, "ERICK 2", 200, minha_awm);
+	read_persona(new_pessoa);
+	update_persona(new_dallisson, "DALLISSON 2", 200, meu_fuzil);
+	read_persona(new_dallisson);
+	delete_arma(&meu_fuzil);
+	read_arma(meu_fuzil);
+	
+	return 0;
 }
